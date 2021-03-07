@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <script src="https://kit.fontawesome.com/f75fc432bb.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Take A Note!</title>
+</head>
+<body>
+  <main>
+    <header>
+      <i class="fas fa-pencil-alt header-logo"></i>
+      <h2>Take A Note!</h2>
+    </header>
+
+    <div id="form-container">
+      <form id="form" autocomplete="off">
+        <input class="note-title" placeholder="Title" type="text">
+        <input class="note-text" placeholder="Take a note.." type="text">
+        <div class="form-buttons">
+          <button type="submit" class="submit-button">Submit</button>
+          <button type="button" class="form-close-button">Close</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="notes"></div>
+    <div class="place-holder">
+      <i class="far fa-sticky-note placeholder-logo"></i>
+      <p class="placeholder-text">Notes you add will appear here</p>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
