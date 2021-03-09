@@ -36,26 +36,6 @@ header {
   padding-left: 10px;
 }
 
-/* Center of Page Place Holder */
-
-.placeholder {
-  margin-top: 15vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.placeholder-logo {
-  margin: 20px;
-  opacity: 0.1;
-}
-.placeholder-text {
-  color: #80868b;
-  font-size: 1.5rem;
-  font-weight: 300;
-  line-height: 1.75rem;
-  cursor: default;
-}
-
 /* Input Form */
 #form:focus,
 input:focus {
@@ -80,6 +60,9 @@ input:focus {
   transition-duration: 0.218s;
   transition-property: background, border, opacity, box-shadow, transform;
   transition-timing-function: ease-in;
+}
+.form-open {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 .note-title {
   display: none;
@@ -127,4 +110,24 @@ input:focus {
   border-radius: 4px;
   border-color: transparent !important;
   background-color: rgb(251, 251, 251);
+}
+
+/* Center of Page Place Holder */
+
+.placeholder {
+  margin-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.placeholder-logo {
+  margin: 20px;
+  opacity: 0.1;
+}
+.placeholder-text {
+  color: #80868b;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.75rem;
+  cursor: default;
 }
