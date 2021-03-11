@@ -8,6 +8,7 @@ class App {
     this.$noteTitle = document.querySelector("#note-title");
     this.$noteText = document.querySelector("#note-text");
     this.$formButtons = document.querySelector("#form-buttons");
+    this.$formCloseButton = document.querySelector("#form-close-button");
 
     this.addEventListeners();
   }
@@ -27,13 +28,24 @@ class App {
         this.addNote({ title, text });
       }
     });
+
+    this.$formCloseButton.addEventListener("click", event => {
+      event.stopPropagation();
+      this.closeForm();
+    });
   }
 
   handleFormClick(event) {
     const isFormClicked = this.$form.contains(event.target);
 
+    const title = this.$noteTitle.value;
+    const text = this.$noteText.value;
+    const hasNote = title || text;
+
     if (isFormClicked) {
       this.openForm();
+    } else if (hasNote) {
+      this.addNote({ title, text });
     } else {
       this.closeForm();
     }
@@ -53,10 +65,10 @@ class App {
     this.$noteText.value = '';
   }
 
-  addNote(note) {
+  addNote({ title, text }) {
     const newNote = {
-      title: note.title,
-      text: note.text,
+      title,
+      text,
       color: "white",
       id: this.notes.length > 0 ? this.notes[this.notes.length - 1].id + 1 : 1
     };
@@ -75,8 +87,8 @@ class App {
           <div class="note-text">${note.text}</div>
           <div class="toolbar-container">
             <div class="toolbar">
-              <img class="toolbar-color" src="https://icon.now.sh/palette">
-              <img class="toolbar-delete" src="https://icon.now.sh/delete">
+              <i class="fas fa-trash toolbar-color"></i>
+              <i class="fas fa-palette  toolbar-delete"></i>
             </div>
           </div>
         </div>
