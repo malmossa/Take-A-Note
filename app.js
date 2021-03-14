@@ -1,3 +1,4 @@
+
 class App {
   constructor() {
     this.notes = [];
@@ -31,6 +32,25 @@ class App {
     document.body.addEventListener('mouseover', event => {
        this.openTooltip(event);
     });
+
+     document.body.addEventListener('mouseout', event => {
+       this.closeTooltip(event);
+    });
+
+    this.$colorTooltip.addEventListener('mouseover', function() {
+      this.style.display = 'flex';
+    })
+
+    this.$colorTooltip.addEventListener('mouseout', function() {
+       this.style.display = 'none';
+    })
+
+    this.$colorTooltip.addEventListener('click', event => {
+      const color = event.target.dataset.color;
+      if (color) {
+        this.editNoteColor(color);
+      }
+    })
 
     this.$form.addEventListener("submit", event => {
       event.preventDefault();
@@ -98,12 +118,17 @@ class App {
 
   openTooltip(event) {
     if (!event.target.matches('.toolbar-color')) return;
-    this.id = event.target.nextElementSibling.dataset.id;
+    this.id = event.target.dataset.id;
     const noteCoords = event.target.getBoundingClientRect();
-    const horizontal = noteCoords.left + window.scrollX;
-    const vertical = noteCoords.top + window.scrollY;
+    const horizontal = noteCoords.left;
+    const vertical = window.scrollY - 25;
     this.$colorTooltip.style.transform = `translate(${horizontal}px, ${vertical}px)`;
     this.$colorTooltip.style.display = 'flex';
+  }
+
+  closeTooltip() {
+    if (!event.target.matches('.toolbar-color')) return;
+    this.$colorTooltip.style.display = "none";
   }
 
   addNote({ title, text }) {
@@ -123,6 +148,13 @@ class App {
     const text = this.$modalText.value;
     this.notes = this.notes.map(note =>
       note.id === Number(this.id) ? { ...note, title, text } : note
+    );
+    this.displayNotes();
+  }
+
+  editNoteColor(color) {
+    this.notes = this.notes.map(note =>
+      note.id === Number(this.id) ? { ...note, color } : note
     );
     this.displayNotes();
   }
@@ -150,8 +182,8 @@ class App {
           <div class="note-text">${note.text}</div>
           <div class="toolbar-container">
             <div class="toolbar">
-              <i class="fas fa-palette toolbar-color"></i>
-              <i class="fas fa-trash toolbar-delete"></i>
+                <i class="fas fa-palette toolbar-color" data-id=${note.id}></i>
+                <i class="fas fa-trash toolbar-delete"></i>
             </div>
           </div>
         </div>
