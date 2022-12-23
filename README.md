@@ -9,7 +9,7 @@ A pure JavaScript project inspired by Google Keep.
 
 ## Live Demo
 
-Try the application live at [https://malmossa.github.io/Take-A-Note/](https://malmossa.github.io/Take-A-Note/)
+Try the application live at [https://malmossa.github.io/Take-A-Note/](https://malmossa.github.io/Take-A-Note)
 
 ## Features
 
